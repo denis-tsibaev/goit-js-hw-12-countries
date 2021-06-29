@@ -1,8 +1,8 @@
 {
   "name": "goit-js-hw-12-countries",
-  "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /parcel-project-template/"
@@ -17,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/denis-tsibaev/goit-js-hw-12-countries/issues"
   },
-  "homepage": "https://github.com/denis-tsibaev/goit-js-hw-12-countries#readme",
-  "dependencies": {
-    "parcel-bundler": "^1.12.5"
-  }
+  "homepage": "https://github.com/denis-tsibaev/goit-js-hw-12-countries#readme"
 }

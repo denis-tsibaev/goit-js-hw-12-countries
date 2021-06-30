@@ -7,50 +7,42 @@ import { error } from '@pnotify/core';
 const refs = {
   cardContainer: document.querySelector('.js-card-container'),
   searchInput: document.querySelector('.input'),
-  countrySearchResult:  document.querySelector('.country-list'),
+  countrySearchResult: document.querySelector('.country-list'),
 };
 
 refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 
 function onSearch(event) {
-  event.preventDefault();
+//   event.preventDefault();
+  //   const inputTarget = event.currentTarget;
 
-//   const inputTarget = event.currentTarget;
   const searchQuery = event.target.value;
 
-  if (searchQuery.length > 0) {
-    fetchCountry(searchQuery).then(renderCountryCard).catch(onFetchError)
-	// .finally(() => (refs.countrySearchResult.innerHTML = ''));
+  if (searchQuery) {
+    fetchCountry(searchQuery).then(renderCountryCard).catch(onFetchError);
+    // .finally(() => (searchQuery = ''));
+  }
 }
+
+function renderCountryCard(resolvedCountries) {
+  let markup = '';
+
+  if (resolvedCountries.length > 10) {
+    error({
+      text: 'необходимо сделать запрос более специфичным',
+    });
+
+    if (resolvedCountries.length === 1) {
+      markup = countryTmpl(resolvedCountries);
+    }
+
+    if (resolvedCountries.length > 1 && resolvedCountries.length <= 10) {
+      markup = countryListTml(...resolvedCountries);
+    }
+  }
+  refs.countrySearchResult.innerHTML = markup;
 }
-  
 
-function renderCountryCard(resolvedCountries){
-	let markup ='';
-
-	if (resolvedCountries.length>10) {
-		error ({
-			title: false,
-            text: 'необходимо сделать запрос более специфичным',
-            sticker: false,
-            maxTextHeight: null,
-            closerHover: false,
-            animation: 'fade',
-            mouseReset: false,
-            delay: 5000,
-		});
-
-		if (resolvedCountries.length===1) {
-			markup = countryTmpl(...resolvedCountries)
-		}
-
-		if (resolvedCountries.length>1&&resolvedCountries.length<=10) {
-			markup = countryListTml(resolvedCountries)
-		}
-	}
-	refs.countrySearchResult.innerHTML = markup
-}
- 
 function fetchCountry(countryName) {
   const url = `https://restcountries.eu/rest/v2/name/${countryName}`;
   return fetch(url).then(response => {

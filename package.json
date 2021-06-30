@@ -26,6 +26,7 @@
   "devDependencies": {
     "@pnotify/core": "^5.2.0",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
-    "posthtml-include": "^1.7.1"
+    "posthtml-include": "^1.7.1",
+    "sass": "^1.35.1"
   }
 }

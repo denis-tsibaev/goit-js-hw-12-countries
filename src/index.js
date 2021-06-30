@@ -1,13 +1,13 @@
-// fetch("https://restcountries.eu/rest/v2")
-//   .then((response) => {
-//     return response.json;
-//   })
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((error) => {
-//     error;
-//   });
+fetch("https://restcountries.eu/rest/v2")
+  .then((response) => {
+    return response.json;
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    error;
+  });
 
 const inputCountry = document.querySelector('.input');
 inputCountry.addEventListener('input', onSearch)

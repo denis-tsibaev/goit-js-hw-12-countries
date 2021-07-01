@@ -11,11 +11,11 @@ const refs = {
   searchInput: document.querySelector('.js-input'),
 };
 
-refs.searchInput.addEventListener('input', debounce(onSearch, 500));
+refs.searchInput.addEventListener('input', debounce(onSearch, 1000));
 
 function onSearch(event) {
   const searchQuery = event.target.value;
-  fetchCountry(searchQuery).then(renderCountry).catch(onFetchError);
+  fetchCountry(searchQuery).then(renderCountry).catch(onFetchError);  
 }
 
 function renderCountry(countryToRender) {
@@ -30,6 +30,8 @@ function renderCountry(countryToRender) {
 
   if (countryToRender.length === 1) {
     markup = countryTmpl(...countryToRender);
+	// Очищаем инпут после рендера карточки страны
+	refs.searchInput.value='';
   }
 
   if (countryToRender.length > 1 && countryToRender.length <= 10) {
@@ -37,6 +39,7 @@ function renderCountry(countryToRender) {
   }
 
   refs.cardContainer.innerHTML = markup;
+  
 }
 
 function onFetchError() {

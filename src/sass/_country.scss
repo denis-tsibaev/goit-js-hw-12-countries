@@ -1,7 +1,31 @@
+body {
+  background-color: lightsteelblue;
+  text-align: center;
+}
+
 h2 {
-	font-size: 46px;
+  font-size: 46px;
 }
 
 .input {
-	width: 500px;
+  width: 500px;
+}
+
+.card {
+  text-align: center;
+  margin-top: 50px;
+
+  ul {
+    list-style: none;
+  }
+}
+
+.country-list {
+  display: flex;
+  justify-content: center;
+
+  .country-list-item {
+    list-style: none;
+	margin: 10px;
+  }
 }

@@ -1,4 +1,5 @@
 import './sass/main.scss';
+import fetchCountry from './js/fetchCountries';
 import countryTmpl from './templates/countryTmpl.hbs';
 import countryListTmpl from './templates/countryListTmpl.hbs';
 import debounce from 'lodash.debounce';
@@ -15,13 +16,6 @@ refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 function onSearch(event) {
   const searchQuery = event.target.value;
   fetchCountry(searchQuery).then(renderCountry).catch(onFetchError);
-}
-
-function fetchCountry(countryName) {
-  const url = `https://restcountries.eu/rest/v2/name/${countryName}`;
-  return fetch(url).then(response => {
-    return response.json();
-  });
 }
 
 function renderCountry(countryToRender) {

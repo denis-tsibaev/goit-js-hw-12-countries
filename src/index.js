@@ -15,6 +15,7 @@ refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 function onSearch(event) {
   const searchQuery = event.target.value;
   fetchCountry(searchQuery).then(renderCountry).catch(onFetchError);
+  console.log(fetchCountry(searchQuery).then(renderCountry).catch(onFetchError));
 }
 
 function fetchCountry(countryName) {
@@ -27,6 +28,7 @@ function fetchCountry(countryName) {
 function renderCountry(countryToRender) {
   const markup = countryTmpl(countryToRender);
   refs.cardContainer.innerHTML = markup;
+//   console.log(markup)
 }
 
 function onFetchError() {

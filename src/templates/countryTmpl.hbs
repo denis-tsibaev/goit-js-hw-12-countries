@@ -1,10 +1,9 @@
 <div class='card'>
-  <h1>{{name}}</h1>
+  <h1>name{{name}}</h1>
   <p>capital:{{capital}}</p>
   <p>population: {{population}}</p>
 
-  <ul>
-    languages:
+  <ul>languages:
     {{#each languages}}
       <li {{name}}></li>
     {{/each}}

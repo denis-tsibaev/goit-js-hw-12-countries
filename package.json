@@ -4,8 +4,10 @@
   "description": "## Зависимости",
   "main": ".posthtmlrc.js",
   "scripts": {
-    "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url /goit-js-hw-12-countries",
+	"deploy": "gh-pages -d dist",
+	"predeploy": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,11 +19,13 @@
   "bugs": {
     "url": "https://github.com/denis-tsibaev/goit-js-hw-12-countries/issues"
   },
-  "homepage": "https://github.com/denis-tsibaev/goit-js-hw-12-countries#readme",
+  "homepage": "https://denis-tsibaev/github.io/goit-js-hw-12-countries",
   "dependencies": {
+    "gh-pages": "^3.2.3",
     "handlebars": "^4.7.7",
     "lodash.debounce": "^4.0.8",
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-nuke-dist": "^1.0.1"
   },
   "devDependencies": {
     "@pnotify/core": "^5.2.0",

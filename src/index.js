@@ -1,10 +1,10 @@
-import './sass/main.scss';
-import fetchCountry from './js/fetchCountries';
-import countryTmpl from './templates/countryTmpl.hbs';
-import countryListTmpl from './templates/countryListTmpl.hbs';
-import debounce from 'lodash.debounce';
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
+import debounce from 'lodash.debounce';
+import fetchCountry from './js/fetchCountries';
+import './sass/main.scss';
+import countryListTmpl from './templates/countryListTmpl.hbs';
+import countryTmpl from './templates/countryTmpl.hbs';
 
 const refs = {
   cardContainer: document.querySelector('.js-card-container'),
@@ -14,7 +14,7 @@ const refs = {
 refs.searchInput.addEventListener('input', debounce(onSearch, 1000));
 
 function onSearch(event) {
-  const searchQuery = event.target.value;
+  const searchQuery = event.target.value.trim();
   fetchCountry(searchQuery).then(renderCountry).catch(onFetchError);  
 }
 
